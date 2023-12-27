@@ -13,7 +13,7 @@ root.render(
   <>
     <HotelBooking />
     <div className="main-content container container-fluid">
-    <App />
+    
     </div>
   </>
 );

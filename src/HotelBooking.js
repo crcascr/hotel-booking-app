@@ -1,5 +1,8 @@
 import React from "react";
 import Header from "./components/Header";
+
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import Home from "./components/Home";
 import HotelList from "./components/HotelList";
 import './HotelBooking.css';
 
@@ -27,7 +30,13 @@ function HotelBooking() {
   return (
     <main className={`pageContainer ${modoOscuro ? "modoOscuro" : ""}`}>
       <Header cambiarModo={cambiarModo} modoOscuro={modoOscuro} />
-      {/* <HotelList /> */}
+      <BrowserRouter>
+      <Routes>
+        <Route path="" element={<Home modoOscuro={modoOscuro}/>} />
+        <Route path="/" element={<Home modoOscuro={modoOscuro}/>} />
+        <Route path="/hotels" element={<HotelList modoOscuro={modoOscuro}/>} />
+      </Routes>
+    </BrowserRouter>
     </main>
   );
 }

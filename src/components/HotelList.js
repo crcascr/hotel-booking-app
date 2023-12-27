@@ -6,7 +6,9 @@ import sortascending from "../images/sort-ascending.svg";
 import { useNavigate } from "react-router-dom";
 import { axios_hotels } from "../services/axios";
 
-function HotelList() {
+import Search from "./Search";
+
+function HotelList(props) {
   const [hotelList, setHotelList] = useState([]);
   const [filteredHotels, setFilteredHotels] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -15,10 +17,11 @@ function HotelList() {
   const [sortBy, setSortBy] = useState({ by: "", descending: false });
   const navigate = useNavigate();
   const inputRef = useRef(null);
+
   const fetchHotelsData = async () => {
     setIsLoading(true);
     // const response = await getHotelsService();
-    console.log("getting Data")
+    console.log("getting Data");
     const response = await axios_hotels.get("https://192.168.1.4:8000/hotels", {
       // Desactivar la verificación de certificados
       httpsAgent: false,
@@ -102,56 +105,24 @@ function HotelList() {
     );
     setFilteredHotels(sortedData);
   };
+
+  
   return (
     <>
       {isLoading ? (
         <img src={loading} className="nav--icono" alt="Loading" />
       ) : (
         <div className="container-fluid">
-          <div className="search-section">
-            <div className="input-group mb-3 mt-3">
-              <label className="input-group-text" htmlFor="filter-type">
-                Filter by:
-              </label>
-              <select
-                className="form-control"
-                id="filter-type"
-                value={filterType}
-                onChange={(e) => {
-                  setFilterType(e.target.value);
-                  inputRef.current.focus();
-                  setSearchText("");
-                }}
-              >
-                <option value=""></option>
-                <option value="name">Name</option>
-                <option value="price">Price</option>
-                <option value="rating">Rating</option>
-              </select>
-            </div>
-            <input
-              ref={inputRef}
-              className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-              disabled={filterType === ""}
-              value={searchText}
-              id="search-input"
-              onChange={(e) => {
-                setSearchText(e.target.value);
-                searchHotel(e.target.value);
-              }}
-            />
-
-            <button
-              className="m-2 btn btn-secondary"
-              onClick={(e) => {
-                setSearchText("");
-                setFilterType("");
-                setFilteredHotels(hotelList);
-              }}
-            >
-              Reset
-            </button>
-          </div>
+          <Search
+            darkMode={props.modoOscuro}
+            filterType={filterType}
+            setFilterType={setFilterType}
+            setSearchText={setSearchText}
+            searchText={searchText}
+            searchHotel={searchHotel}
+            setFilteredHotels={setFilteredHotels}
+            hotelList={hotelList}
+          />
           {filteredHotels?.length > 0 ? (
             <table className="container">
               <thead>
