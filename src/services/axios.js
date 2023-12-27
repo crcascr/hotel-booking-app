@@ -1,8 +1,7 @@
 import axios from "axios";
 
-const axios_hotels = axios.create({
-  baseURL: "http://localhost:8000/",
-});
+const axios_hotels = axios.create(
+);
 
 axios_hotels.interceptors.request.use((config) => {
   config.headers = {

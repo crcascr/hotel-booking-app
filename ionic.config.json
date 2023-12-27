@@ -1,0 +1,7 @@
+{
+    "name": "hotelBooking",
+    "integrations": {
+      "capacitor": {}
+    },
+    "type": "react"
+  }

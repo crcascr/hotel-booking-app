@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { getHotelsService } from "../services/hotelServices";
 import loading from "../images/loading.gif";
-
 import sortdescending from "../images/sort-descending.svg";
 import sortascending from "../images/sort-ascending.svg";
 import { useNavigate } from "react-router-dom";
+import { axios_hotels } from "../services/axios";
 
 function HotelList() {
   const [hotelList, setHotelList] = useState([]);
@@ -17,7 +17,12 @@ function HotelList() {
   const inputRef = useRef(null);
   const fetchHotelsData = async () => {
     setIsLoading(true);
-    const response = await getHotelsService();
+    // const response = await getHotelsService();
+    console.log("getting Data")
+    const response = await axios_hotels.get("https://192.168.1.4:8000/hotels", {
+      // Desactivar la verificación de certificados
+      httpsAgent: false,
+    });
 
     if (response && response.data) {
       setHotelList(response.data);
