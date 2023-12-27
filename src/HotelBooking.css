@@ -1,0 +1,416 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+body * {
+  font-family: Satoshi, sans-serif;
+  color: #0e141b;
+}
+
+.paginaContainer--svg-background:before {
+  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
+  position: absolute;
+  content: "";
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.paginaContainer--gradiente {
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  background-image: radial-gradient(
+      at 27% 37%,
+      hsla(175, 100%, 60%, 1) 0px,
+      transparent 0%
+    ),
+    radial-gradient(at 97% 21%, hsla(125, 100%, 70%, 1) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, #03a9f4 0px, transparent 50%),
+    radial-gradient(at 10% 29%, hsla(255, 100%, 65%, 1) 0px, transparent 50%),
+    radial-gradient(at 97% 96%, hsla(35, 100%, 70%, 1) 0px, transparent 50%),
+    radial-gradient(at 33% 50%, hsla(195, 100%, 70%, 1) 0px, transparent 50%),
+    radial-gradient(at 79% 53%, hsla(325, 100%, 75%, 1) 0px, transparent 50%);
+  position: absolute;
+  content: "";
+  filter: blur(100px) saturate(150%);
+  opacity: 0.2;
+}
+
+.paginaContainer--contenido {
+  position: relative;
+  z-index: 1;
+}
+
+.paginaContainer {
+  transition: background-color 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.paginaContainer section {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.paginaContainer h2 {
+  font-size: 2.05rem;
+}
+
+.navPortafolio {
+  position: sticky;
+  top: 1rem;
+  z-index: 1;
+}
+
+.modoOscuro {
+  background-color: #0e141b!important;
+  color: #fff;
+}
+
+.nav--links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.esquemaColor {
+  padding: 0.65rem 0.75rem;
+  cursor: pointer;
+  background-color: #0e141b;
+  color: white;
+  transition: background-color 0.3s ease-in-out;
+  border: 0;
+  border-radius: 2rem;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.esquemaColor:hover {
+  box-shadow: 0 0 20px #0e141b;
+}
+
+.esquemaColor--oscuro {
+  background-color: white;
+  color: #0e141b;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.esquemaColor--oscuro:hover {
+  box-shadow: 0 0 20px white;
+}
+
+.texto--modoOscuro {
+  color: white;
+}
+
+.nav--link {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0.65rem 0.75rem;
+  border: 0;
+  border-radius: 0.75rem;
+  background: linear-gradient(90deg, #43c494, #138863);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 1px;
+}
+
+.nav--icono {
+  width: 2rem;
+  margin-right: 0.2rem;
+}
+
+.nav--link:hover {
+  background: transparent;
+  color:#000 !important;
+}
+
+.nav--span {
+  border-radius: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: linear-gradient(90deg, #20a97b, #0f6d51);
+  mix-blend-mode: color;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-top: 2rem;
+  width: 90%;
+}
+
+.intro--titulo {
+  text-align: center;
+}
+
+.intro--containerFoto {
+  position: relative;
+  overflow: hidden;
+}
+
+.intro--blob {
+  position: absolute;
+  width: 7.3rem;
+  height: auto;
+  top: 0%;
+  left: 33%;
+  z-index: 1;
+}
+
+.intro--imagen {
+  text-align: center;
+}
+
+.intro--foto {
+  width: 6rem;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  border-radius: 2rem;
+  margin-left: 0.8rem;
+}
+
+.intro--redes {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.intro--red {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 4rem;
+  height: 4rem;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.intro--red::before {
+  content: "";
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Puedes ajustar el color de fondo */
+  border-radius: 30%;
+  transform: scale(0);
+  transition: transform 0.4s ease-out;
+  pointer-events: none; /* Para que no interfiera con los clics en el icono */
+  z-index: 0;
+}
+
+.linkedin::before {
+  background-color: #00a0dc80;
+}
+
+.linkedinOscuro::before {
+  background-color: #007bb580;
+}
+
+.github::before {
+  background-color: #24292e80;
+}
+
+.githubOscuro::before {
+  background-color: #ffffff80;
+}
+
+.x::before {
+  background-color: #1da1f280;
+}
+
+.xOscuro::before {
+  background-color: #5da9dd80;
+}
+
+.instagram::before {
+  background-color: #bc2a8d80;
+}
+
+.instagramOscuro::before {
+  background-color: #e1306c80;
+}
+
+.intro--red:hover::before {
+  transform: scale(1);
+}
+
+.intro--red-icono {
+  width: 3rem;
+  height: 3rem;
+  z-index: 1;
+}
+
+.texto--color {
+  background: linear-gradient(135deg, #7bdcb5, #8ed1fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.biografia--texto {
+  text-align: justify;
+}
+
+.lenguajes--container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  cursor: pointer;
+}
+
+.lenguajes--lenguaje {
+  width: 8rem;
+  font-weight: bold;
+  transition: background-color 0.5s ease-in-out;
+  padding: 0rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 3rem;
+}
+
+.lenguajes--logo {
+  height: 6rem;
+  margin-top: 10px;
+}
+
+.proyecto--container {
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.proyecto--descripcion {
+  width: 300px;
+  padding: 0rem 1.5rem;
+  margin: 0rem 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+  border-radius: 1rem;
+  transition: all 0.4s ease-in;
+}
+
+.proyecto--descripcion-texto {
+  text-align: justify;
+  cursor: default;
+}
+
+@media only screen and (max-width: 767px) {
+  .proyecto--container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .proyecto--descripcion {
+    margin: 0.5rem;
+    width: auto;
+  }
+}
+
+.proyecto--imagenes {
+  display: flex;
+  overflow-x: auto;
+  padding: 1.5rem 0rem;
+}
+
+.proyecto--imagen {
+  width: 70%;
+  transition: transform 15s linear;
+  border-radius: 1rem;
+  margin: 0rem 1.5rem;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.proyecto--link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.proyecto--link:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.proyecto--link-icono {
+  width: 2.5rem;
+  margin-right: 0.2rem;
+}
+
+.idiomas--container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.idiomas--introduccion {
+  text-align: justify;
+}
+
+.idiomas--idioma-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.idiomas--idioma-texto {
+  text-align: center;
+}
+
+.pasatiempos--container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pasatiempos--introduccion {
+  text-align: justify;
+}
+
+.pasatiempos--pasatiempo-container {
+  width: 20rem;
+  height: auto;
+}
+
+.pasatiempos--pasatiempo-inicio {
+  text-align: center;
+}
+
+.pasatiempos--pasatiempo-titulo {
+  margin-top: 0;
+}
+
+.pasatiempos--pasatiempo-descripcion {
+  text-align: justify;
+}
