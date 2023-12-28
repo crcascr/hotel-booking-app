@@ -1,11 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { getHotelsService } from "../services/hotelServices";
 import loading from "../images/loading.gif";
-import sortdescending from "../images/sort-descending.svg";
-import sortascending from "../images/sort-ascending.svg";
 import { useNavigate } from "react-router-dom";
-import { axios_hotels } from "../services/axios";
-
 import Search from "./Search";
 import Sort from "./Sort";
 import Hotel from "./Hotel";
@@ -116,105 +112,7 @@ function HotelList(props) {
           {filteredHotels?.length > 0 ? (
             <div className="hotelsContainer">{hotelElements}</div>
           ) : (
-            // <table className="container">
-            //   <thead>
-            //     <tr>
-            //       <th
-            //         scope="col"
-            //         className="col-2 header"
-            //         onClick={(e) => {
-            //           setSortBy({
-            //             by: "id",
-            //             descending:
-            //               sortBy.by === "id" ? !sortBy.descending : false,
-            //           });
-            //         }}
-            //       >
-            //         # ID
-            //         {sortBy.by === "id" && (
-            //           <img
-            //             src={sortBy.descending ? sortdescending : sortascending}
-            //             className="filter-icon"
-            //             alt="Sort"
-            //           />
-            //         )}
-            //       </th>
-            //       <th
-            //         scope="col"
-            //         className="col-4 header"
-            //         onClick={(e) => {
-            //           setSortBy({
-            //             by: "name",
-            //             descending:
-            //               sortBy.by === "name" ? !sortBy.descending : false,
-            //           });
-            //         }}
-            //       >
-            //         Name
-            //         {sortBy.by === "name" && (
-            //           <img
-            //             src={sortBy.descending ? sortdescending : sortascending}
-            //             className="filter-icon"
-            //             alt="Sort"
-            //           />
-            //         )}
-            //       </th>
-            //       <th
-            //         scope="col"
-            //         className="col-2 header"
-            //         onClick={(e) => {
-            //           setSortBy({
-            //             by: "price",
-            //             descending:
-            //               sortBy.by === "price" ? !sortBy.descending : false,
-            //           });
-            //         }}
-            //       >
-            //         Price
-            //         {sortBy.by === "price" && (
-            //           <img
-            //             src={sortBy.descending ? sortdescending : sortascending}
-            //             className="filter-icon"
-            //             alt="Sort"
-            //           />
-            //         )}
-            //       </th>
-            //       <th
-            //         scope="col"
-            //         className="col-2 header"
-            //         onClick={(e) => {
-            //           setSortBy({
-            //             by: "rating",
-            //             descending:
-            //               sortBy.by === "rating" ? !sortBy.descending : false,
-            //           });
-            //         }}
-            //       >
-            //         Rating
-            //         {sortBy.by === "rating" && (
-            //           <img
-            //             src={sortBy.descending ? sortdescending : sortascending}
-            //             className="filter-icon"
-            //             alt="Sort"
-            //           />
-            //         )}
-            //       </th>
-            //     </tr>
-            //   </thead>
-
-            //   <tbody>
-            //     {filteredHotels?.map((hotel, index) => {
-            //       return (
-            //         <tr key={"hotel-" + hotel.id + index}>
-            //           <th>{hotel.id}</th>
-            //           <td>{hotel.name}</td>
-            //           <td>{hotel.price}</td>
-            //           <td>{hotel.rating}</td>
-            //         </tr>
-            //       );
-            //     })}
-            //   </tbody>
-            // </table>
+        
             <span>No data found</span>
           )}
         </div>
