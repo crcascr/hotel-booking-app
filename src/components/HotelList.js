@@ -18,14 +18,24 @@ function HotelList(props) {
 
   const fetchHotelsData = async () => {
     setIsLoading(true);
+    try{
     const response = await getHotelsService();
 
     if (response && response.data) {
       setHotelList(response.data);
       setFilteredHotels(response.data);
+      localStorage.setItem("localData", JSON.stringify(response.data));
     } else {
-      navigate("/home");
+      navigate("/");
     }
+  }catch(error){
+    let localData = localStorage.getItem("localData");
+    if(localData===null || localData!==undefined){
+      localData=[]
+    }
+    setHotelList(localData)
+    setFilteredHotels(localData)
+  }
     setIsLoading(false);
   };
 

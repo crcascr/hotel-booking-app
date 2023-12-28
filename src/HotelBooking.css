@@ -202,6 +202,7 @@ body * {
   margin: 1rem;
   padding: 1rem;
   border-radius: 0.5rem;
+  box-shadow: 0 0 15px #b7b4b4;
 }
 
 .hotel--container {
@@ -625,6 +626,8 @@ dialog:-internal-dialog-in-top-layer::backdrop {
   background: rgba(0, 0, 0, 0.5);
 }
 dialog{
+  border: 1px solid #e7e7e7;
+  border-radius: 1rem;
   position: fixed;
   inset: 0px;
   background: rgba(0, 0, 0, 0.5);
@@ -632,6 +635,20 @@ dialog{
 .close--button{
   justify-content: center;
   display: flex;
+}
+
+.modal--image{
+  margin-top: 1rem;
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+}
+.hotel-modal {
+  margin: 2px;
+  padding: 5px;
+  border-radius: 0.5rem;
+  width: 100%;
+  box-shadow: 0 0 15px #b7b4b4;
 }
 
 @media only screen and (max-width: 767px) {
@@ -659,10 +676,9 @@ dialog{
     width: 100% !important;
   }
 
+
 }
-h3{
-  font-style: italic;
-}
+
 h4{
-  font-style: oblique;
-}
+  font-size: 15px!important;
+} 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Contact(props) {
+function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -15,8 +15,6 @@ function Contact(props) {
       alert("Please fill out all fields");
       return;
     }
-
-    // Send data to API
 
     setSubmitted(true);
   };

@@ -1,7 +1,6 @@
 import StarRating from "./StarRating";
 import location from "../images/location.svg";
-function HotelModal({ hotelData, darkMode, setOpenModal }) {
-  console.log("MODAL", hotelData);
+function HotelModal({ hotelData, darkMode, setOpenModal }) {  
   const closeModal = () => {
     const dialog = document.getElementById("modal-hotel");
     //@ts-expect-error
@@ -11,9 +10,16 @@ function HotelModal({ hotelData, darkMode, setOpenModal }) {
 
   return (
     // <div className="modal-hotels">
-    <dialog id="modal-hotel" className={"modal-hotels"}>
+    <dialog
+      id="modal-hotel"
+      className={"modal-hotels"}
+      style={{
+        color: darkMode ? "white" : "#0e141b",
+        backgroundColor: darkMode ? "#0e141b" : "#eefafa",
+      }}
+    >
       <div>
-        <div className="hotel">
+        <div className="hotel-modal">
           <div className="hotel--container">
             <div className="hotel--basic-data">
               <div className="hotel--title">
@@ -54,7 +60,7 @@ function HotelModal({ hotelData, darkMode, setOpenModal }) {
                 {hotelData.location}
                 <img
                   src={location}
-                  className="nav--icono"
+                  className={`nav--icono ${darkMode ? "darkModeText" : ""}`}
                   alt={`Location icon`}
                 />
               </span>
@@ -75,18 +81,34 @@ function HotelModal({ hotelData, darkMode, setOpenModal }) {
             </p>
           </div>
           <div className="hotel-extra">
-            <div>Phone: {hotelData.phone}</div>
+            <div
+              className={`${
+                darkMode ? "darkModeText" : ""
+              }`}
+            >
+              Phone: {hotelData.phone}
+            </div>
             <br />
-            <div>
+            <div
+              className={`${
+                darkMode ? "darkModeText" : ""
+              }`}
+            >
               <h3>Rooms:</h3>
-              {hotelData?.rooms?.map((room,index) => {
+              {hotelData?.rooms?.map((room, index) => {
                 return (
-                  <div className="hotel" key={"room-"+index}>
-                    <h4>{room.type.toUpperCase()}</h4>
+                  <div className="hotel-modal" key={"room-" + index}>
+                    <h4
+                      className={`${
+                        darkMode ? "darkModeText" : ""
+                      }`}
+                    >
+                      {room.type.toUpperCase()}
+                    </h4>
                     <br />
                     <div className="hotel--image-container">
                       <img
-                        className="hotel--image"
+                        className="modal--image"
                         src={room.photo}
                         alt={`Room ${room.type} photo`}
                       />
@@ -103,12 +125,22 @@ function HotelModal({ hotelData, darkMode, setOpenModal }) {
               })}
             </div>
             <br />
-            <div>
+            <div
+              className={`${
+                darkMode ? "darkModeText" : ""
+              }`}
+            >
               <h3>Comments:</h3>
-              {hotelData?.comments?.map((comment,index) => {
+              {hotelData?.comments?.map((comment, index) => {
                 return (
-                  <div className="hotel" key={"comment-"+index}>
-                    <p>{comment}</p>
+                  <div className="hotel-modal" key={"comment-" + index}>
+                    <p
+                      className={`${
+                        darkMode ? "darkModeText" : ""
+                      }`}
+                    >
+                      {comment}
+                    </p>
                     <br />
                   </div>
                 );
