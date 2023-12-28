@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { axios_hotels } from "../services/axios";
 
 import Search from "./Search";
+import Sort from "./Sort";
 import Hotel from "./Hotel";
 
 function HotelList(props) {
@@ -21,12 +22,12 @@ function HotelList(props) {
 
   const fetchHotelsData = async () => {
     setIsLoading(true);
-    // const response = await getHotelsService();
+    const response = await getHotelsService();
     console.log("getting Data");
-    const response = await axios_hotels.get("https://192.168.1.4:8000/hotels", {
+    //const response = await axios_hotels.get("https://192.168.1.4:8000/hotels", {
       // Desactivar la verificación de certificados
-      httpsAgent: false,
-    });
+      //httpsAgent: false,
+    //});
 
     if (response && response.data) {
       setHotelList(response.data);
@@ -124,6 +125,7 @@ function HotelList(props) {
             setFilteredHotels={setFilteredHotels}
             hotelList={hotelList}
           />
+          <Sort darkMode={props.modoOscuro}/>
           <div className="hotelsContainer">{hotelElements}</div>
 
           {filteredHotels?.length > 0 ? (
