@@ -44,19 +44,10 @@ function HotelList(props) {
   }, []);
 
   useEffect(() => {
-    console.log("useEffect sortBy", sortBy);
+    //console.log("useEffect sortBy", sortBy);
     if (sortBy !== "") sortHotels(sortBy);
   }, [sortBy]);
 
-  const searchHotel = (search) => {
-    if (filterType !== "") {
-      const value = search.toUpperCase();
-      const filteredData = hotelList?.filter((hotel) => {
-        return hotel?.[filterType].toString().toUpperCase().includes(value);
-      });
-      setFilteredHotels(filteredData);
-    }
-  };
   const sortHotels = (type) => {
     // setFilteredHotels([]);
     let sortedData = [];
@@ -130,7 +121,6 @@ function HotelList(props) {
             setFilterType={setFilterType}
             setSearchText={setSearchText}
             searchText={searchText}
-            searchHotel={searchHotel}
             setFilteredHotels={setFilteredHotels}
             hotelList={hotelList}
           />

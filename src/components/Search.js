@@ -1,5 +1,19 @@
 import { useRef } from "react";
+
 function Search(props) {
+  const searchHotel = (search) => {
+    if (props.filterType !== "") {
+      const value = search.toUpperCase();
+      const filteredData = props.hotelList?.filter((hotel) => {
+        return hotel?.[props.filterType]
+          .toString()
+          .toUpperCase()
+          .includes(value);
+      });
+      props.setFilteredHotels(filteredData);
+    }
+  };
+
   const inputRef = useRef(null);
   return (
     <div className="search-section">
@@ -41,7 +55,7 @@ function Search(props) {
         id="search-input"
         onChange={(e) => {
           props.setSearchText(e.target.value);
-          props.searchHotel(e.target.value);
+          searchHotel(e.target.value);
         }}
       />
       <button
