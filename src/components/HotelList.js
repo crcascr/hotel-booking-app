@@ -23,18 +23,11 @@ function HotelList(props) {
   const fetchHotelsData = async () => {
     setIsLoading(true);
     const response = await getHotelsService();
-    console.log("getting Data");
-    //const response = await axios_hotels.get("https://192.168.1.4:8000/hotels", {
-      // Desactivar la verificación de certificados
-      //httpsAgent: false,
-    //});
 
     if (response && response.data) {
       setHotelList(response.data);
       setFilteredHotels(response.data);
-      console.log("Fetching data", response.data);
     } else {
-      console.error("Error:", response.toString());
       navigate("/home");
     }
     setIsLoading(false);
@@ -45,7 +38,6 @@ function HotelList(props) {
   }, []);
 
   useEffect(() => {
-    //console.log("useEffect sortBy", sortBy);
     if (sortBy !== "") sortHotels(sortBy);
   }, [sortBy]);
 
@@ -75,7 +67,6 @@ function HotelList(props) {
         return 0;
       });
     } else {
-      // if (type.by === "price") {
       if (type.descending) {
         sortedData = [...filteredHotels].sort((a, b) => {
           return b[type?.by] - a[type?.by];
@@ -88,14 +79,7 @@ function HotelList(props) {
       }
       // }
     }
-    console.log(
-      "sortedData",
-      sortedData,
-      "descending",
-      type.descending,
-      "type",
-      type
-    );
+
     setFilteredHotels(sortedData);
   };
 
@@ -113,7 +97,9 @@ function HotelList(props) {
   return (
     <>
       {isLoading ? (
-        <img src={loading} className="nav--icono" alt="Loading" />
+        <div className="loading-container">
+          <img src={loading} className="loading" alt="Loading" />
+        </div>
       ) : (
         <div className="container-fluid">
           <Search
@@ -125,111 +111,110 @@ function HotelList(props) {
             setFilteredHotels={setFilteredHotels}
             hotelList={hotelList}
           />
-          <Sort darkMode={props.modoOscuro}/>
-          <div className="hotelsContainer">{hotelElements}</div>
+          <Sort darkMode={props.modoOscuro} setSortBy={setSortBy} />
 
           {filteredHotels?.length > 0 ? (
-            <table className="container">
-              <thead>
-                <tr>
-                  <th
-                    scope="col"
-                    className="col-2 header"
-                    onClick={(e) => {
-                      console.log("sortBy", sortBy);
-                      setSortBy({
-                        by: "id",
-                        descending:
-                          sortBy.by === "id" ? !sortBy.descending : false,
-                      });
-                    }}
-                  >
-                    # ID
-                    {sortBy.by === "id" && (
-                      <img
-                        src={sortBy.descending ? sortdescending : sortascending}
-                        className="filter-icon"
-                        alt="Sort"
-                      />
-                    )}
-                  </th>
-                  <th
-                    scope="col"
-                    className="col-4 header"
-                    onClick={(e) => {
-                      setSortBy({
-                        by: "name",
-                        descending:
-                          sortBy.by === "name" ? !sortBy.descending : false,
-                      });
-                    }}
-                  >
-                    Name
-                    {sortBy.by === "name" && (
-                      <img
-                        src={sortBy.descending ? sortdescending : sortascending}
-                        className="filter-icon"
-                        alt="Sort"
-                      />
-                    )}
-                  </th>
-                  <th
-                    scope="col"
-                    className="col-2 header"
-                    onClick={(e) => {
-                      setSortBy({
-                        by: "price",
-                        descending:
-                          sortBy.by === "price" ? !sortBy.descending : false,
-                      });
-                    }}
-                  >
-                    Price
-                    {sortBy.by === "price" && (
-                      <img
-                        src={sortBy.descending ? sortdescending : sortascending}
-                        className="filter-icon"
-                        alt="Sort"
-                      />
-                    )}
-                  </th>
-                  <th
-                    scope="col"
-                    className="col-2 header"
-                    onClick={(e) => {
-                      setSortBy({
-                        by: "rating",
-                        descending:
-                          sortBy.by === "rating" ? !sortBy.descending : false,
-                      });
-                    }}
-                  >
-                    Rating
-                    {sortBy.by === "rating" && (
-                      <img
-                        src={sortBy.descending ? sortdescending : sortascending}
-                        className="filter-icon"
-                        alt="Sort"
-                      />
-                    )}
-                  </th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {filteredHotels?.map((hotel, index) => {
-                  return (
-                    <tr key={"hotel-" + hotel.id + index}>
-                      <th>{hotel.id}</th>
-                      <td>{hotel.name}</td>
-                      <td>{hotel.price}</td>
-                      <td>{hotel.rating}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            <div className="hotelsContainer">{hotelElements}</div>
           ) : (
+            // <table className="container">
+            //   <thead>
+            //     <tr>
+            //       <th
+            //         scope="col"
+            //         className="col-2 header"
+            //         onClick={(e) => {
+            //           setSortBy({
+            //             by: "id",
+            //             descending:
+            //               sortBy.by === "id" ? !sortBy.descending : false,
+            //           });
+            //         }}
+            //       >
+            //         # ID
+            //         {sortBy.by === "id" && (
+            //           <img
+            //             src={sortBy.descending ? sortdescending : sortascending}
+            //             className="filter-icon"
+            //             alt="Sort"
+            //           />
+            //         )}
+            //       </th>
+            //       <th
+            //         scope="col"
+            //         className="col-4 header"
+            //         onClick={(e) => {
+            //           setSortBy({
+            //             by: "name",
+            //             descending:
+            //               sortBy.by === "name" ? !sortBy.descending : false,
+            //           });
+            //         }}
+            //       >
+            //         Name
+            //         {sortBy.by === "name" && (
+            //           <img
+            //             src={sortBy.descending ? sortdescending : sortascending}
+            //             className="filter-icon"
+            //             alt="Sort"
+            //           />
+            //         )}
+            //       </th>
+            //       <th
+            //         scope="col"
+            //         className="col-2 header"
+            //         onClick={(e) => {
+            //           setSortBy({
+            //             by: "price",
+            //             descending:
+            //               sortBy.by === "price" ? !sortBy.descending : false,
+            //           });
+            //         }}
+            //       >
+            //         Price
+            //         {sortBy.by === "price" && (
+            //           <img
+            //             src={sortBy.descending ? sortdescending : sortascending}
+            //             className="filter-icon"
+            //             alt="Sort"
+            //           />
+            //         )}
+            //       </th>
+            //       <th
+            //         scope="col"
+            //         className="col-2 header"
+            //         onClick={(e) => {
+            //           setSortBy({
+            //             by: "rating",
+            //             descending:
+            //               sortBy.by === "rating" ? !sortBy.descending : false,
+            //           });
+            //         }}
+            //       >
+            //         Rating
+            //         {sortBy.by === "rating" && (
+            //           <img
+            //             src={sortBy.descending ? sortdescending : sortascending}
+            //             className="filter-icon"
+            //             alt="Sort"
+            //           />
+            //         )}
+            //       </th>
+            //     </tr>
+            //   </thead>
+
+            //   <tbody>
+            //     {filteredHotels?.map((hotel, index) => {
+            //       return (
+            //         <tr key={"hotel-" + hotel.id + index}>
+            //           <th>{hotel.id}</th>
+            //           <td>{hotel.name}</td>
+            //           <td>{hotel.price}</td>
+            //           <td>{hotel.rating}</td>
+            //         </tr>
+            //       );
+            //     })}
+            //   </tbody>
+            // </table>
             <span>No data found</span>
           )}
         </div>

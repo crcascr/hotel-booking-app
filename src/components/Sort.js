@@ -1,4 +1,14 @@
-function Sort(props) {
+function Sort({ darkMode, setSortBy }) {
+  const sortHotels = (typeStr) => {
+    const sortP = typeStr.split("-");
+    const type = {
+      by: sortP[0],
+      descending: sortP[1] === "descending" ? false : true,
+    };
+
+    setSortBy(type);
+  };
+
   return (
     <div className="sort-section">
       <div className="input-group mb-3 mt-3 me-3">
@@ -6,8 +16,8 @@ function Sort(props) {
           className="input-group-text"
           htmlFor="filter-type"
           style={{
-            color: props.darkMode ? "white" : "#0e141b",
-            backgroundColor: props.darkMode ? "#0e141b" : "white",
+            color: darkMode ? "white" : "#0e141b",
+            backgroundColor: darkMode ? "#0e141b" : "white",
           }}
         >
           Sort:
@@ -15,14 +25,15 @@ function Sort(props) {
         <select
           className="form-control"
           id="filter-type"
-          
+          onChange={(e) => sortHotels(e.target.value)}
         >
           <option value=""></option>
           <option value="name-ascending">Name (A-Z)</option>
           <option value="name-descending">Name (Z-A)</option>
-          <option value="price-ascending">Price (Low to high)</option>
-          <option value="price-descending">Price (High to low)</option>
-          <option value="rating">Rating</option>
+          <option value="price-ascending">Price (High to low)</option>
+          <option value="price-descending">Price (Low to high)</option>
+          <option value="rating-ascending">Rating (High to low)</option>
+          <option value="rating-descending">Rating (Low to high)</option>
         </select>
       </div>
     </div>

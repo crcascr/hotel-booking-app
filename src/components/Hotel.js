@@ -1,7 +1,6 @@
 import StarRating from "./StarRating";
 
 function Hotel(props) {
-  //console.log("Hotel props", props);
   return (
     <div className="hotel" key={props.hotelIndex}>
       <div className="hotel--container">
