@@ -2,33 +2,115 @@
   "hotels": [
     {
       "id": 1,
-      "name": "Hotel ABC",
-      "price": 150,
-      "rating": 4.5
-    },
-    {
-      "id": 2,
-      "name": "Hotel CBA",
+      "name": "Ritz Carlton Cancun Hotel",
+      "location": "Cancun, Mexico",
       "price": 350,
-      "rating": 4
+      "rating": 4.8,
+      "mapLink":"https://maps.app.goo.gl/Lpe3tQzq1cQJJ9KC9", 
+      "photo": "https://ritzcarlton.imgix.net/...",
+      "description": "Luxury oceanfront hotel with 3 pools, spa and multiple restaurants.",
+      "longDescription": "Lorem ipsum...",
+      "amenities": ["Pool", "Gym", "Spa", "Wifi"],
+      "rooms": {
+        "standard": {
+          "price": 350,
+          "details": "Room with ocean view."
+        },
+        "suite": {
+          "price": 500,
+          "details": "Suite with jacuzzi and ocean view."
+        }
+      }
+    },
+    {  
+      "id": 2,
+      "name": "Grand Hyatt Rio de Janeiro",
+      "location": "Rio de Janeiro, Brazil",
+      "price": 250,
+      "rating": 4.5,
+      "mapLink":"https://maps.app.goo.gl/UeGEQjEf3D1A7hEZ9", 
+      "photo": "https://hyatt.imgix.net/...",
+      "description": "5-star hotel with outdoor pools and panoramic views of the city.",
+      "longDescription": "Lorem ipsum...",
+      "amenities": ["Pool", "Gym", "Wifi"],
+      "rooms": {
+        "standard": {
+          "price": 250, 
+          "details": "Room with ocean view."
+        },
+        "suite": {
+          "price": 400,
+          "details": "Suite with jacuzzi and ocean view."
+        }
+      }
     },
     {
       "id": 3,
-      "name": "Hotel XYZ",
-      "price": 100,
-      "rating": 3.5
+      "name": "Shangri-La Paris",
+      "location": "París, France",
+      "price": 450,
+      "rating": 4.4,
+      "mapLink":"https://maps.app.goo.gl/f6mnSqLPNJZALjF5A",
+      "photo": "https://ritzcarlton.imgix.net/...",
+      "description": "Historic mansion with luxury suites, a spa and views of the Eiffel Tower.",
+
+      "longDescription": "Lorem ipsum...",
+      "amenities": ["Pool", "Gym", "Wifi", "Spa"],
+      "rooms": {
+        "standard": {
+          "price": 450,
+          "details": "Room with view of the Eiffel Tower."
+        },
+        "suite": {
+          "price": 600,
+          "details": "Luxury suite with Jacuzzi and view of the Eiffel Tower."
+        }
+      }
     },
     {
       "id": 4,
-      "name": "Hotel Hilton",
-      "price": 500,
-      "rating": 4.9
+      "name": "Four Seasons Safari Lodge",
+      "location": "Serengeti National Park, Tanzania",
+      "price": 800,
+      "rating": 4.9,
+      "mapLink":"https://maps.app.goo.gl/iXgP2fSBNNXgaNUs7",
+      "photo": "https://ritzcarlton.imgix.net/...",
+      "description": "Luxury lodge in the middle of the savannah with daily safaris and swimming pool.",
+
+      "longDescription": "Lorem ipsum...",
+      "amenities": ["Piscina", "Wifi", "Safaris"],
+      "rooms": {
+        "standard": {
+          "price": 800,
+          "details": "Room with a view of the African savannah."
+        },
+        "suite": {
+          "price": 950,
+          "details": "Luxury suite with private pool and view of the African savannah."
+        }
+      }
     },
     {
-      "id": 5,
-      "name": "Hotel Carton",
-      "price": 1500,
-      "rating": 5
+      "id": 5, 
+      "name": "Marina Bay Sands",
+      "location": "Singapore",
+      "price": 500,
+      "rating": 4.8,
+      "mapLink":"https://maps.app.goo.gl/miKsQrtRJ4aMFDvR7",
+      "photo": "https://marinabaysands.imgix.net/...",
+      "description": "Iconic hotel with infinity pool on 57th floor and luxurious suites.",
+      "longDescription": "Lorem ipsum...",
+      "amenities": ["Pool", "Gym", "Spa", "Wifi"],
+      "rooms": {
+        "standard": {
+          "price": 500,
+          "details": "Modern room with city view."  
+        },
+        "suite": {
+          "price": 950,
+          "details": "Luxury suite with jacuzzi, separate living room, and spectacular skyline views."
+        }
+      }
     }
   ]
 }

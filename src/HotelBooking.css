@@ -9,6 +9,7 @@ body {
 body * {
   font-family: Satoshi, sans-serif;
   color: #0e141b;
+  transition: background-color 0.5s ease-in-out;
 }
 
 .paginaContainer--svg-background:before {
@@ -69,7 +70,12 @@ body * {
 
 .modoOscuro {
   background-color: #0e141b!important;
-  color: #fff;
+  color: #fff !important;
+  
+}
+
+.darkModeText{
+  color: #fff !important;
 }
 
 .nav--links {
@@ -158,6 +164,58 @@ body * {
   .search-section {
     flex-wrap: wrap;
   }
+}
+
+.hotel{
+  border: 1px solid #e7e7e7;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.hotel--title{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+}
+
+.hotel--name{
+  margin: 0;
+}
+
+.hotel--rating-container{
+  display: flex;
+  align-items: center;
+}
+
+.hotel--rating{
+  margin-right: 2px;
+}
+
+.hotel--star-rating{
+  margin-bottom: 4px;
+}
+
+.hotel--location{
+  cursor: pointer;
+}
+
+.hotel--location:hover{
+  text-decoration: underline;
+}
+
+.hotel-price-amount{
+  text-align: end;
+}
+
+.hotel--button-details{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hotel--button{
+  font-weight: 500;
 }
 
 .intro {

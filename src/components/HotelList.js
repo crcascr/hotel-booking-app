@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { axios_hotels } from "../services/axios";
 
 import Search from "./Search";
+import Hotel from "./Hotel";
 
 function HotelList(props) {
   const [hotelList, setHotelList] = useState([]);
@@ -106,7 +107,17 @@ function HotelList(props) {
     setFilteredHotels(sortedData);
   };
 
-  
+  const hotelElements = filteredHotels.map((hotel, index) => {
+    return (
+      <Hotel
+        key={index}
+        hotelData={hotel}
+        hotelIndex={index}
+        darkMode={props.modoOscuro}
+      />
+    );
+  });
+
   return (
     <>
       {isLoading ? (
@@ -123,6 +134,8 @@ function HotelList(props) {
             setFilteredHotels={setFilteredHotels}
             hotelList={hotelList}
           />
+          <div className="hotelsContainer">{hotelElements}</div>
+
           {filteredHotels?.length > 0 ? (
             <table className="container">
               <thead>

@@ -97,7 +97,7 @@ function Header(props) {
           className={`collapse navbar-collapse ${isNavOpen ? "show" : ""}`}
           id="navbarSupportedContent"
         >
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
             {componentesNav}
             <li className="nav-item">
               <button
