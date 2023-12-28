@@ -29,8 +29,9 @@ function HotelList(props) {
       navigate("/");
     }
   }catch(error){
-    let localData = localStorage.getItem("localData");
-    if(localData===null || localData!==undefined){
+    let localData = JSON.parse(localStorage.getItem("localData"));
+    console.log("Local Data", localData)
+    if(localData===null || localData===undefined){
       localData=[]
     }
     setHotelList(localData)

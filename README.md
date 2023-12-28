@@ -1,5 +1,8 @@
 # Run server JSON command
     npm run serve-json
+# set up android manifest.    
+add this line in the application tag to allow the http request:
+android:usesCleartextTraffic="true"
 
 # Firts Step:
 Review the ip v4 form you laptop device. In my case is 192.168.0.104
@@ -22,3 +25,6 @@ Set-ExecutionPolicy Unrestricted
 # Run server JSON command
     npm run serve-json
 # Run the instaler in your device
+
+# App Android installation
+    To do the installation you must disable Google Play Protect
