@@ -1,4 +1,4 @@
-function Sort({ darkMode, setSortBy }) {
+function Sort({ darkMode, setSortBy ,sortBy}) {
   const sortHotels = (typeStr) => {
     const sortP = typeStr.split("-");
     const type = {
@@ -17,7 +17,7 @@ function Sort({ darkMode, setSortBy }) {
           htmlFor="filter-type"
           style={{
             color: darkMode ? "white" : "#0e141b",
-            backgroundColor: darkMode ? "#0e141b" : "white",
+            backgroundColor: darkMode ? "#0e141b" : "#fbfbfb",
           }}
         >
           Sort:
@@ -26,6 +26,7 @@ function Sort({ darkMode, setSortBy }) {
           className="form-control"
           id="filter-type"
           onChange={(e) => sortHotels(e.target.value)}
+          value={setSortBy.by}
         >
           <option value=""></option>
           <option value="name-ascending">Name (A-Z)</option>

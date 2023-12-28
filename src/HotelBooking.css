@@ -65,8 +65,9 @@ body * {
 }
 
 .navbar {
-  padding: 0 !important;
-  margin: 0.5rem 0rem;
+  padding: 0rem !important;
+  margin: 0.5rem 0rem !important;
+  background: #acc7c7 !important;
 }
 
 .modoOscuro {
@@ -97,6 +98,7 @@ body * {
   border: 0;
   border-radius: 0.5rem;
   transition: box-shadow 0.3s ease-in-out;
+  width: 130px;
 }
 
 .esquemaColor:hover {
@@ -121,15 +123,20 @@ body * {
   display: flex;
   align-items: center;
   position: relative;
-  padding: 0.65rem 0.75rem;
+  padding: 0.5rem 0.5rem;
   border: 0;
   border-radius: 0.75rem;
-  background: linear-gradient( 135deg, #57bcff, #005085 );
+  background: linear-gradient(135deg, #57bcff, #005085);
   cursor: pointer;
   text-decoration: none;
   font-weight: 500;
   margin: 1px;
   color: #ffff !important;
+  justify-content: center;
+}
+.nav-item {
+  margin-left: 5px;
+  width: 130px;
 }
 
 .nav--icono {
@@ -173,6 +180,9 @@ body * {
 @media (max-width: 767px) {
   .search-section {
     flex-wrap: wrap;
+  }
+  .aboutUs--cta {
+    justify-content: center;
   }
 }
 
@@ -265,7 +275,60 @@ body * {
 .hotel--button {
   font-weight: 500;
   color: white !important;
-  background: linear-gradient( 135deg, #57bcff, #005085 );
+  background: linear-gradient(135deg, #57bcff, #005085);
+}
+
+.aboutUs {
+  margin-bottom: 3rem;
+}
+
+.aboutUs--title {
+  font-size: 2.5rem;
+}
+
+.aboutUs--founder {
+  font-size: 1.8rem;
+}
+
+.aboutUs--testimonials,
+.aboutUs--faq,
+.aboutUs--cta {
+  font-size: 2rem;
+}
+
+.color-text {
+  background: linear-gradient(135deg, #57bcff, #005085);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.aboutUs--image {
+  display: flex;
+  justify-content: center;
+}
+
+.aboutUs--content {
+  margin-top: 1rem;
+}
+
+.hero-image {
+  width: 18.75rem;
+  border-radius: 1rem;
+}
+
+@media (min-width: 767px) {
+  .hero-image {
+    width: 25.75rem;
+    border-radius: 1rem;
+  }
+}
+
+.aboutUs--cta {
+  display: flex;
+  grid-gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .intro {
@@ -455,6 +518,12 @@ body * {
     margin: 0.5rem;
     width: auto;
   }
+
+  .navbar-nav{
+    margin-top: 1rem;
+    column-gap: 0.5rem;
+    gap: 0.5rem;
+  }
 }
 
 .proyecto--imagenes {
@@ -533,4 +602,16 @@ body * {
 
 .pasatiempos--pasatiempo-descripcion {
   text-align: justify;
+}
+
+.content {
+  width: 80% !important;
+  margin: 0 auto;
+}
+.side-bar {
+  width: 80%;
+  margin: 0 auto;
+  background: #acc7c7 !important;
+  border-radius: 0.5rem;
+  padding: 8px 0px;
 }

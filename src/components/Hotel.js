@@ -67,7 +67,7 @@ function Hotel(props) {
 
       <div className="hotel--button-details">
         <button
-          className={`btn btn btn-info hotel--button ${
+          className={`btn btn-info hotel--button ${
             props.darkMode ? "darkModeText" : ""
           }`}
         >

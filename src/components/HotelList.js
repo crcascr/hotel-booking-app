@@ -8,7 +8,7 @@ import Hotel from "./Hotel";
 
 function HotelList(props) {
   const [hotelList, setHotelList] = useState([]);
-  const [filteredHotels, setFilteredHotels] = useState([]);
+  const [filteredHotels, setFilteredHotels] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [filterType, setFilterType] = useState("");
@@ -34,12 +34,12 @@ function HotelList(props) {
   }, []);
 
   useEffect(() => {
-    if (sortBy !== "") sortHotels(sortBy);
+    if (sortBy.by !== "") sortHotels(sortBy);
   }, [sortBy]);
 
-  const sortHotels = (type) => {
-    // setFilteredHotels([]);
-    let sortedData = [];
+  const sortHotels = async (type) => {
+    
+    let sortedData = null;
     if (type?.by === "name") {
       sortedData = filteredHotels.sort((a, b) => {
         const nameA = a[type?.by].toString().toUpperCase(); // ignore upper and lowercase
@@ -75,20 +75,21 @@ function HotelList(props) {
       }
       // }
     }
-
-    setFilteredHotels(sortedData);
+    setFilteredHotels([...sortedData]);
   };
 
-  const hotelElements = filteredHotels.map((hotel, index) => {
-    return (
-      <Hotel
-        key={index}
-        hotelData={hotel}
-        hotelIndex={index}
-        darkMode={props.modoOscuro}
-      />
-    );
-  });
+  const hotelElements = () => {
+    return filteredHotels?.map((hotel, index) => {
+      return (
+        <Hotel
+          key={index}
+          hotelData={hotel}
+          hotelIndex={index}
+          darkMode={props.modoOscuro}
+        />
+      );
+    });
+  };
 
   return (
     <>
@@ -97,7 +98,7 @@ function HotelList(props) {
           <img src={loading} className="loading" alt="Loading" />
         </div>
       ) : (
-        <div className="container-fluid">
+        <div className="container-fluid content">
           <Search
             darkMode={props.modoOscuro}
             filterType={filterType}
@@ -107,14 +108,25 @@ function HotelList(props) {
             setFilteredHotels={setFilteredHotels}
             hotelList={hotelList}
           />
-          <Sort darkMode={props.modoOscuro} setSortBy={setSortBy} />
-
-          {filteredHotels?.length > 0 ? (
-            <div className="hotelsContainer">{hotelElements}</div>
-          ) : (
-        
-            <span>No data found</span>
-          )}
+          <Sort
+            darkMode={props.modoOscuro}
+            setSortBy={setSortBy}
+            sortBy={sortBy}
+          />
+          <div className="hotelsContainer">
+            {filteredHotels?.length > 0 ? (
+              filteredHotels?.map((hotel, index) => {
+               return <Hotel
+                  key={index}
+                  hotelData={hotel}
+                  hotelIndex={index}
+                  darkMode={props.modoOscuro}
+                />;
+              })
+            ) : (
+              <span>No data found</span>
+            )}
+          </div>
         </div>
       )}
     </>

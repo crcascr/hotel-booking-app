@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Home from "./components/Home";
 import HotelList from "./components/HotelList";
+import About from "./components/About";
 import './HotelBooking.css';
 
 function HotelBooking() {
@@ -35,6 +36,7 @@ function HotelBooking() {
         <Route path="" element={<Home modoOscuro={modoOscuro}/>} />
         <Route path="/" element={<Home modoOscuro={modoOscuro}/>} />
         <Route path="/hotels" element={<HotelList modoOscuro={modoOscuro}/>} />
+        <Route path="/aboutUs" element={<About darkMode={modoOscuro}/>} />
       </Routes>
     </BrowserRouter>
     </main>

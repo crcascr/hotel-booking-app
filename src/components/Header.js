@@ -38,7 +38,7 @@ function Header(props) {
           className="nav--link"
           style={{
             color: props.modoOscuro ? "white" : "#0e141b",
-            backgroundColor: props.modoOscuro ? "#0e141b" : "white",
+            backgroundColor: props.modoOscuro ? "#0e141b" : "#fbfbfb",
           }}
         >
           <img
@@ -57,14 +57,14 @@ function Header(props) {
       className={`navbar bg-body-tertiary navbar-expand-lg`}
       style={{
         color: props.modoOscuro ? "white" : "#0e141b",
-        backgroundColor: props.modoOscuro ? "#0e141b" : "white",
+        backgroundColor: props.modoOscuro ? "#0e141b" : "#fbfbfb",
       }}
     >
       <div
-        className="container-fluid"
+        className="container-fluid side-bar"
         style={{
           color: props.modoOscuro ? "white" : "#0e141b",
-          backgroundColor: props.modoOscuro ? "#0e141b" : "white",
+          backgroundColor: props.modoOscuro ? "#0e141b" : "#fbfbfb",
         }}
       >
         <a
@@ -72,7 +72,7 @@ function Header(props) {
           href="#"
           style={{
             color: props.modoOscuro ? "white" : "#0e141b",
-            backgroundColor: props.modoOscuro ? "#0e141b" : "white",
+            backgroundColor: props.modoOscuro ? "#0e141b" : "#fbfbfb",
           }}
         >
           Hotel Booking
@@ -80,7 +80,6 @@ function Header(props) {
         <button
           style={{
             color: props.modoOscuro ? "white" : "#0e141b",
-            backgroundColor: props.modoOscuro ? "#0e141b" : "white",
           }}
           className="navbar-toggler"
           type="button"

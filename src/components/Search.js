@@ -23,7 +23,7 @@ function Search(props) {
           htmlFor="filter-type"
           style={{
             color: props.darkMode ? "white" : "#0e141b",
-            backgroundColor: props.darkMode ? "#0e141b" : "white",
+            backgroundColor: props.darkMode ? "#0e141b" : "#fbfbfb",
           }}
         >
           Filter by:
