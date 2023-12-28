@@ -14,7 +14,7 @@ function Sort({ darkMode, setSortBy ,sortBy}) {
       <div className="input-group mb-3 mt-3 me-3">
         <label
           className="input-group-text"
-          htmlFor="filter-type"
+          htmlFor="sort-type"
           style={{
             color: darkMode ? "white" : "#0e141b",
             backgroundColor: darkMode ? "#0e141b" : "#fbfbfb",
@@ -24,7 +24,7 @@ function Sort({ darkMode, setSortBy ,sortBy}) {
         </label>
         <select
           className="form-control"
-          id="filter-type"
+          id="sort-type"
           onChange={(e) => sortHotels(e.target.value)}
           value={setSortBy.by}
         >

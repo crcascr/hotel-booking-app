@@ -35,7 +35,7 @@ function Header(props) {
         <a
           key={"nav-" + elemento.texto}
           href={`/${elemento.seccion}`}
-          className="nav--link"
+          className={"nav--link "+(props.modoOscuro?"dark--hover":"")}
           style={{
             color: props.modoOscuro ? "white" : "#0e141b",
             backgroundColor: props.modoOscuro ? "#0e141b" : "#fbfbfb",

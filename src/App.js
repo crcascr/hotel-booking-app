@@ -2,9 +2,9 @@ import React from "react";
 import Header from "./components/Header";
 
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Home from "./components/Home";
 import HotelList from "./components/HotelList";
 import About from "./components/About";
+import Contact from "./components/Contact";
 import './HotelBooking.css';
 
 function App() {
@@ -33,10 +33,11 @@ function App() {
       <Header cambiarModo={cambiarModo} modoOscuro={modoOscuro} />
       <BrowserRouter>
       <Routes>
-        <Route path="" element={<Home modoOscuro={modoOscuro}/>} />
-        <Route path="/" element={<Home modoOscuro={modoOscuro}/>} />
+        <Route path="" element={<HotelList modoOscuro={modoOscuro}/>} />
+        <Route path="/" element={<HotelList modoOscuro={modoOscuro}/>} />
         <Route path="/hotels" element={<HotelList modoOscuro={modoOscuro}/>} />
         <Route path="/aboutUs" element={<About darkMode={modoOscuro}/>} />
+        <Route path="/contact" element={<Contact darkMode={modoOscuro}/>} />
       </Routes>
     </BrowserRouter>
     </main>

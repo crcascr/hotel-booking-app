@@ -1,6 +1,18 @@
+import { useEffect, useState } from "react";
+import HotelModal from "./HotelModal";
 import StarRating from "./StarRating";
+import location from "../images/location.svg";
 
 function Hotel(props) {
+  const [openModal, setOpenModal] = useState(false);
+  const funtionOpenModal = () => {
+    const dialog = document.getElementById("modal-hotel");
+    //@ts-expect-error
+    if (dialog) dialog.showModal();
+  };
+  useEffect(() => {
+    if (openModal) funtionOpenModal();
+  }, [openModal]);
   return (
     <div className="hotel" key={props.hotelIndex}>
       <div className="hotel--container">
@@ -45,7 +57,13 @@ function Hotel(props) {
             }
           >
             {props.hotelData.location}
+            <img
+              src={location}
+              className="nav--icono"
+              alt={`Location icon`}
+            />
           </span>
+
           <p
             className={`hotel--description mt-2 ${
               props.darkMode ? "darkModeText" : ""
@@ -70,10 +88,20 @@ function Hotel(props) {
           className={`btn btn-info hotel--button ${
             props.darkMode ? "darkModeText" : ""
           }`}
+          onClick={() => {
+            setOpenModal(true);
+          }}
         >
           More details
         </button>
       </div>
+      {openModal && (
+        <HotelModal
+          setOpenModal={setOpenModal}
+          hotelData={props.hotelData}
+          darkMode={props.darkMode}
+        />
+      )}
     </div>
   );
 }
