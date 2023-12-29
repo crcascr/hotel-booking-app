@@ -41,7 +41,7 @@ function HotelModal({ hotelData, darkMode, setOpenModal }) {
                 <img
                   className="hotel--image"
                   src={hotelData.photo}
-                  alt={`Hotel ${hotelData.name} photo`}
+                  alt={`Hotel ${hotelData.name} `}
                 />
               </div>
             </div>
@@ -110,7 +110,7 @@ function HotelModal({ hotelData, darkMode, setOpenModal }) {
                       <img
                         className="modal--image"
                         src={room.photo}
-                        alt={`Room ${room.type} photo`}
+                        alt={`Room ${room.type} `}
                       />
                     </div>
                     <p

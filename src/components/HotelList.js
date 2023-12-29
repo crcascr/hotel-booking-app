@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { getHotelsService } from "../services/hotelServices";
 import loading from "../images/loading.gif";
 import { useNavigate } from "react-router-dom";
@@ -14,42 +14,36 @@ function HotelList(props) {
   const [filterType, setFilterType] = useState("");
   const [sortBy, setSortBy] = useState({ by: "", descending: false });
   const navigate = useNavigate();
-  const inputRef = useRef(null);
 
   const fetchHotelsData = async () => {
     setIsLoading(true);
-    try{
-    const response = await getHotelsService();
+    try {
+      const response = await getHotelsService();
 
-    if (response && response.data) {
-      setHotelList(response.data);
-      setFilteredHotels(response.data);
-      localStorage.setItem("localData", JSON.stringify(response.data));
-    } else {
-      navigate("/");
+      if (response && response.data) {
+        setHotelList(response.data);
+        setFilteredHotels(response.data);
+        localStorage.setItem("localData", JSON.stringify(response.data));
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      let localData = JSON.parse(localStorage.getItem("localData"));
+      console.log("Local Data", localData);
+      if (localData === null || localData === undefined) {
+        localData = [];
+      }
+      setHotelList(localData);
+      setFilteredHotels(localData);
     }
-  }catch(error){
-    let localData = JSON.parse(localStorage.getItem("localData"));
-    console.log("Local Data", localData)
-    if(localData===null || localData===undefined){
-      localData=[]
-    }
-    setHotelList(localData)
-    setFilteredHotels(localData)
-  }
     setIsLoading(false);
   };
 
   useEffect(() => {
-    fetchHotelsData();
-  }, []);
-
-  useEffect(() => {
-    if (sortBy.by !== "") sortHotels(sortBy);
-  }, [sortBy]);
+    if (hotelList.length === 0) fetchHotelsData();
+  }, [hotelList]);
 
   const sortHotels = async (type) => {
-    
     let sortedData = null;
     if (type?.by === "name") {
       sortedData = filteredHotels.sort((a, b) => {
@@ -89,18 +83,10 @@ function HotelList(props) {
     setFilteredHotels([...sortedData]);
   };
 
-  const hotelElements = () => {
-    return filteredHotels?.map((hotel, index) => {
-      return (
-        <Hotel
-          key={index}
-          hotelData={hotel}
-          hotelIndex={index}
-          darkMode={props.modoOscuro}
-        />
-      );
-    });
-  };
+  useEffect(() => {
+    if (sortBy.by !== "") sortHotels(sortBy);
+  }, [sortBy]);
+
 
   return (
     <>
@@ -127,12 +113,14 @@ function HotelList(props) {
           <div className="hotelsContainer">
             {filteredHotels?.length > 0 ? (
               filteredHotels?.map((hotel, index) => {
-               return <Hotel
-                  key={index}
-                  hotelData={hotel}
-                  hotelIndex={index}
-                  darkMode={props.modoOscuro}
-                />;
+                return (
+                  <Hotel
+                    key={index}
+                    hotelData={hotel}
+                    hotelIndex={index}
+                    darkMode={props.modoOscuro}
+                  />
+                );
               })
             ) : (
               <span>No data found</span>

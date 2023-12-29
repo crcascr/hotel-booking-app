@@ -38,7 +38,7 @@ function Hotel(props) {
             <img
               className="hotel--image"
               src={props.hotelData.photo}
-              alt={`Hotel ${props.hotelData.name} photo`}
+              alt={`Hotel ${props.hotelData.name}`}
             />
           </div>
         </div>
