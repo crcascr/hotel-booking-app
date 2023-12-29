@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useState, useEffect } from "react";
 import { getHotelsService } from "../services/hotelServices";
 import loading from "../images/loading.gif";
