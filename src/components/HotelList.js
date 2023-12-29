@@ -41,7 +41,7 @@ function HotelList(props) {
 
   useEffect(() => {
     if (hotelList.length === 0) fetchHotelsData();
-  }, [hotelList]);
+  }, [hotelList, filteredHotels]);
 
   const sortHotels = async (type) => {
     let sortedData = null;
@@ -85,7 +85,7 @@ function HotelList(props) {
 
   useEffect(() => {
     if (sortBy.by !== "") sortHotels(sortBy);
-  }, [sortBy]);
+  }, [sortBy, filteredHotels]);
 
 
   return (

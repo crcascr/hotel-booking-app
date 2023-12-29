@@ -69,7 +69,7 @@ function Header(props) {
       >
         <a
           className="navbar-brand"
-          href="javascript:void(0)"
+          href="/"
           style={{
             color: props.modoOscuro ? "white" : "#0e141b",
             backgroundColor: props.modoOscuro ? "#0e141b" : "#fbfbfb",
